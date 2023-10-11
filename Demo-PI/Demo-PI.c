@@ -1,7 +1,7 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
-#include <cstdio>
+#include <stdio.h>
 
 
 // resolução do jogo é diferente do tamanho de janela criado, a resolução é definida pelo buffer e o tamanho da janela é o buffer multiplicado
@@ -9,8 +9,8 @@
 #define BUFFER_W 640
 #define BUFFER_H 480
 #define DISP_SCALE 2
-#define DISP_W (BUFFER_W * DISP_SCALE)
-#define DISP_H (BUFFER_H * DISP_SCALE)
+#define DISP_W BUFFER_W
+#define DISP_H BUFFER_H
 
 #define TURN_BOX_X 580
 #define TURN_BOX_Y 360
@@ -18,17 +18,17 @@
 
 
 bool is_mouse_over_turn_box(int mx, int my) {
-    int box_max_x = (TURN_BOX_X + TURN_BOX_RADIUS) * DISP_SCALE;
-    int box_min_x = (TURN_BOX_X - TURN_BOX_RADIUS) * DISP_SCALE;
-    int box_max_y = (TURN_BOX_Y + TURN_BOX_RADIUS) * DISP_SCALE;
-    int box_min_y = (TURN_BOX_Y - TURN_BOX_RADIUS) * DISP_SCALE;
+    int box_max_x = (TURN_BOX_X + TURN_BOX_RADIUS);
+    int box_min_x = (TURN_BOX_X - TURN_BOX_RADIUS);
+    int box_max_y = (TURN_BOX_Y + TURN_BOX_RADIUS);
+    int box_min_y = (TURN_BOX_Y - TURN_BOX_RADIUS);
 
     return mx >= box_min_x && mx <= box_max_x && my >= box_min_y && my <= box_max_y;
 }
 
 void notify_new_turn(const ALLEGRO_FONT *font,char turnText[]) {
-    char new_turn_warning[100] = "Novo turno: ";
-    strcat_s(new_turn_warning, turnText);
+    char new_turn_warning[24] = { "Novo turno: " };
+    strcat_s(new_turn_warning, sizeof new_turn_warning, turnText);
     al_draw_text(font, al_map_rgb(255, 255, 255), BUFFER_W / 2, 16, ALLEGRO_ALIGN_CENTER, new_turn_warning);
 }
 
@@ -83,7 +83,7 @@ int main()
         }
 
         char turn_text[10];
-        sprintf_s(turn_text, "%d", turn);
+        sprintf_s(turn_text, sizeof turn_text, "%d", turn);
 
         if (done) {
             break;
@@ -99,7 +99,6 @@ int main()
 
         if (redraw && al_is_event_queue_empty(queue))
         {
-            int text_offset = turn > 9 ? 2 : 1;
             al_set_target_bitmap(buffer);
             al_clear_to_color(al_map_rgb(0, 0, 0));
             // TODO DESENHO A TELA DEVE ACONTECER A PARTIR DAQUI
