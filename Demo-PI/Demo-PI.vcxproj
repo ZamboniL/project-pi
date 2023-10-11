@@ -132,7 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Demo-PI.cpp" />
+    <ClCompile Include="Demo-PI.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
