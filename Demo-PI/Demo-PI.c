@@ -16,16 +16,16 @@
 #define TURN_BOX_Y 360
 #define TURN_BOX_RADIUS 30
 
-float square1_x = 450.0;
-float square1_y = 100.0;
-float square2_x = 100.0;
-float square2_y = 100.0;
+int hero_x = 450;
+int hero_y = 100;
+int enemy_x = 100;
+int enemy_y = 100;
 // quadrado verde
-float square1_width = 100.0;
-float square1_height = 100.0;
+int hero_width = 100;
+int hero_height = 150;
 // quadrado azul
-float square2_width = 100.0;
-float square2_height = 100.0;
+int enemy_width = 100;
+int enemy_height = 150;
 
 
 bool is_mouse_over_turn_box(int mx, int my) {
@@ -69,11 +69,15 @@ int main()
     int turn = 0;
     int turn_text_animation = 0;
 
+    bool is_mouse_over_hero = false;
+    bool is_mouse_over_enemy = false;
+
     al_start_timer(timer);
     while (1)
     {
         al_wait_for_event(queue, &event);
 
+        // ESSE É O LOCAL DE EVENTO, TODAS AS INTERAÇÕES DO USUÁRIO FICAM LOCALIZADAS AQUI
         switch (event.type)
         {
             case ALLEGRO_EVENT_TIMER:
@@ -91,7 +95,14 @@ int main()
                         turn++;
                     }
                 }
-
+            case ALLEGRO_EVENT_MOUSE_AXES:
+                // Verifica se o mouse está em cima do herói
+                is_mouse_over_hero = event.mouse.x >= hero_x && event.mouse.x <= hero_x + hero_width &&
+                    event.mouse.y >= hero_y && event.mouse.y <= hero_y + hero_height;
+                
+                // Verifica se o mouse está em cima do inimigo
+                is_mouse_over_enemy = event.mouse.x >= enemy_x && event.mouse.x <= enemy_x + enemy_width &&
+                    event.mouse.y >= enemy_y && event.mouse.y <= enemy_y + enemy_height;
         }
 
         char turn_text[10];
@@ -102,7 +113,7 @@ int main()
         }
 
         if (current_turn != turn) {
-            // aqui ficam consequências da troca de turno
+            // AQUI FICAM AS CONSEQUÊNCIAS DA TROCA DE TURNO
             turn_text_animation = 360;
             // ------------------------------------------
             current_turn = turn;
@@ -122,33 +133,28 @@ int main()
 
             al_draw_text(font, al_map_rgb(255, 255, 255), TURN_BOX_X + 0, TURN_BOX_Y - 3, ALLEGRO_ALIGN_CENTER, turn_text);
             al_draw_circle(TURN_BOX_X, TURN_BOX_Y, TURN_BOX_RADIUS, al_map_rgb_f(1, 0, 1), 2);
-            al_draw_filled_rectangle(square1_x, square1_y, square1_x + 100, square1_y + 100, al_map_rgb(0, 255, 0));
-            al_draw_filled_rectangle(square2_x, square2_y, square2_x + 100, square2_y + 100, al_map_rgb(0, 0, 255));
+            al_draw_filled_rectangle(hero_x, hero_y, hero_x + 100, hero_y + 100, al_map_rgb(0, 255, 0));
+            al_draw_filled_rectangle(enemy_x, enemy_y, enemy_x + 100, enemy_y + 100, al_map_rgb(0, 0, 255));
             ALLEGRO_COLOR box_color_green = al_map_rgb(0, 255, 0);  
             ALLEGRO_COLOR box_color_blue = al_map_rgb(0, 0, 255);   
             ALLEGRO_COLOR highlight_color = al_map_rgb(255, 255, 0); // Cor de destaque quando o mouse está dentro
-            int mouse_x = event.mouse.x;
-            int mouse_y = event.mouse.y;
             // Verifique a primeira caixa (quadrado verde)
-            if (mouse_x >= square1_x && mouse_x <= square1_x + square1_width &&
-                mouse_y >= square1_y && mouse_y <= square1_y + square1_height) {
+            if (is_mouse_over_hero) {
                 // O mouse está dentro da primeira caixa (quadrado verde)
-                al_draw_filled_rectangle(square1_x, square1_y, square1_x + square1_width, square1_y + square1_height, highlight_color);
+                al_draw_filled_rectangle(hero_x, hero_y, hero_x + hero_width, hero_y + hero_height, highlight_color);
             }
             else {
                 // O mouse não está dentro da primeira caixa (quadrado verde)
-                al_draw_filled_rectangle(square1_x, square1_y, square1_x + square1_width, square1_y + square1_height, box_color_green);
+                al_draw_filled_rectangle(hero_x, hero_y, hero_x + hero_width, hero_y + hero_height, box_color_green);
             }
-
             // Verifique a segunda caixa (quadrado azul)
-            if (mouse_x >= square2_x && mouse_x <= square2_x + square2_width &&
-                mouse_y >= square2_y && mouse_y <= square2_y + square2_height) {
+            if (is_mouse_over_enemy) {
                 // O mouse está dentro da segunda caixa (quadrado azul)
-                al_draw_filled_rectangle(square2_x, square2_y, square2_x + square2_width, square2_y + square2_height, highlight_color);
+                al_draw_filled_rectangle(enemy_x, enemy_y, enemy_x + enemy_width, enemy_y + enemy_height, highlight_color);
             }
             else {
                 // O mouse não está dentro da segunda caixa (quadrado azul)
-                al_draw_filled_rectangle(square2_x, square2_y, square2_x + square2_width, square2_y + square2_height, box_color_blue);
+                al_draw_filled_rectangle(enemy_x, enemy_y, enemy_x + enemy_width, enemy_y + enemy_height, box_color_blue);
             }
 
             
