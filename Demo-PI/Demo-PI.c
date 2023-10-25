@@ -27,6 +27,10 @@ int hero_height = 150;
 int enemy_width = 100;
 int enemy_height = 150;
 
+//MANA
+int mana = 2;
+int box_mana_radius = 30;
+
 
 bool is_mouse_over_turn_box(int mx, int my) {
     int box_max_x = (TURN_BOX_X + TURN_BOX_RADIUS);
@@ -115,6 +119,7 @@ int main()
         if (current_turn != turn) {
             // AQUI FICAM AS CONSEQUÊNCIAS DA TROCA DE TURNO
             turn_text_animation = 360;
+            mana = 2;
             // ------------------------------------------
             current_turn = turn;
         }
@@ -138,6 +143,12 @@ int main()
             ALLEGRO_COLOR box_color_green = al_map_rgb(0, 255, 0);  
             ALLEGRO_COLOR box_color_blue = al_map_rgb(0, 0, 255);   
             ALLEGRO_COLOR highlight_color = al_map_rgb(255, 255, 0); // Cor de destaque quando o mouse está dentro
+            
+            //circulo mana
+            al_draw_circle(60,360, box_mana_radius, al_map_rgb_f(1, 0, 0), 2);
+            al_draw_text(font, al_map_rgb(255, 255, 255), 60 + 0, 360 - 3, ALLEGRO_ALIGN_CENTER,"2");
+            
+            
             // Verifique a primeira caixa (quadrado verde)
             if (is_mouse_over_hero) {
                 // O mouse está dentro da primeira caixa (quadrado verde)
