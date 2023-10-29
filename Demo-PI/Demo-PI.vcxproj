@@ -132,10 +132,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationTimer.h" />
+    <ClCompile Include="card.c" />
+    <ClCompile Include="CreatureEntity.h" />
+    <ClCompile Include="creature_entity.c" />
     <ClCompile Include="Demo-PI.c" />
+    <ClCompile Include="entity.c" />
+    <ClCompile Include="Entity.h" />
+    <ClCompile Include="screen.h" />
+    <ClCompile Include="table.c" />
+    <ClCompile Include="Table.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

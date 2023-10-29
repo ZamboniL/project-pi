@@ -18,8 +18,40 @@
     <ClCompile Include="Demo-PI.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CreatureEntity.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Table.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="card.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="table.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="screen.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationTimer.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="creature_entity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
