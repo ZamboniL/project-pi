@@ -2,13 +2,14 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_primitives.h>
 #include <stdio.h>
+#include "CombatArena.h"
 #include "screen.h"
 #include "Entity.h"
 #include "Table.h"
 #include "Card.h"
 #include "CreatureEntity.h"
 #include "AnimationTimer.h"
-
+#include "combat.h"
 
 #define TURN_BOX_X 580
 #define TURN_BOX_Y 360
@@ -61,11 +62,7 @@ int main()
     int turn = 0;
     int turn_text_animation = 0;
 
-    CreatureEntity enemy = {.entity.x = 450, .entity.y = 100, .entity.width = 100, .entity.height = 150 };
-    roll_creature_intention(&enemy);
-
-    CreatureEntity hero = { .entity.x = 100, .entity.y = 100, .entity.width = 100, .entity.height = 150 };
-
+    CombatArena arena = create_arena();
     Table table = create_table();
     AnimationTimer animation_timer = { .hand_return = 0 };
     
@@ -106,6 +103,11 @@ int main()
                 if (event.mouse.button == 1) {
                     if (table.is_dragging_card) {
                         table.is_dragging_card = false;
+                        if (table.is_hovering_arena_entity) {
+                            play_card(&table, &arena);
+                            continue;
+                        }
+
                         animation_timer.hand_return = 60;
                         continue;
                     }
@@ -125,14 +127,13 @@ int main()
                 }
             case ALLEGRO_EVENT_MOUSE_AXES:
                 // Verifica se o mouse está em cima do herói
-                mark_if_mouse_is_over_entity(event.mouse, &hero.entity);
-                // Verifica se o mouse está em cima do inimigo
-                mark_if_mouse_is_over_entity(event.mouse, &enemy.entity);
+                mark_if_mouse_is_over_arena_entity(event.mouse, &arena, &table);
 
                 for (int i = 0; i < table.hand_size; i++) {
                     mark_if_mouse_is_over_entity(event.mouse, &table.hand[i].entity);
                 }
 
+                // drag card
                 if (table.is_dragging_card) {
                     table.hand[table.card_being_dragged].entity.x = event.mouse.x - table.drag_x_offset;
                     table.hand[table.card_being_dragged].entity.y = event.mouse.y - table.drag_y_offset;
@@ -153,7 +154,7 @@ int main()
 
         if (current_turn != turn) {
             // AQUI FICAM AS CONSEQUÊNCIAS DA TROCA DE TURNO
-            roll_creature_intention(&enemy);
+            roll_enemy_intentions(&arena);
             turn_text_animation = 360;
             mana = 2;
             hand_draw(&table);
@@ -180,8 +181,7 @@ int main()
             al_draw_circle(60,360, box_mana_radius, al_map_rgb(147, 190, 223), 4);
             al_draw_text(font, al_map_rgb(255, 255, 255), 60 + 0, 360 - 3, ALLEGRO_ALIGN_CENTER, "2");
             
-            draw_creature_entity(&enemy, font, true);
-            draw_creature_entity(&hero, font, false);
+            draw_arena_entities(&arena, font);
            
 
             if (table.has_highlighted_card) {

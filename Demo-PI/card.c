@@ -34,6 +34,10 @@ Card create_card_from_id(int id) {
 }
 
 void draw_card(Card* card, ALLEGRO_FONT* font) {
+	if (card->id == CARD_NULL) {
+		return;
+	}
+
 	al_draw_filled_rectangle(card->entity.x, card->entity.y, card->entity.x + card->entity.width, card->entity.y + card->entity.height, al_map_rgb(121, 86, 149));
 
 	char cost[2], damage[2], shield[2];

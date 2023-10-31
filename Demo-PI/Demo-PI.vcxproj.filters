@@ -45,12 +45,24 @@
     <ClCompile Include="creature_entity.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="combat_arena.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="combat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatArena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="combat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

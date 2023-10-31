@@ -134,6 +134,8 @@
   <ItemGroup>
     <ClCompile Include="AnimationTimer.h" />
     <ClCompile Include="card.c" />
+    <ClCompile Include="combat.c" />
+    <ClCompile Include="combat_arena.c" />
     <ClCompile Include="CreatureEntity.h" />
     <ClCompile Include="creature_entity.c" />
     <ClCompile Include="Demo-PI.c" />
@@ -147,6 +149,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="combat.h" />
+    <ClInclude Include="CombatArena.h" />
     <ClInclude Include="Card.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

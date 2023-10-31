@@ -114,6 +114,8 @@ void highlight_card(Table* table, int highlight_index) {
 
 void discard_card(Table* table, int hand_index) {
 	table->discard[table->next_discard] = create_card_from_id(table->hand[hand_index].id);
+	table->hand[hand_index] = create_card_from_id(CARD_NULL);
+
 	table->next_discard++;
 }
 
@@ -152,7 +154,9 @@ Table create_table() {
 		.drag_y_offset = 0,
 		.highlighted_card = 0,
 		.has_highlighted_card = false,
-		.next_discard = 0
+		.next_discard = 0,
+		.hovering_arena_entity = 0,
+		.is_hovering_arena_entity = false
 	};
 
 	table.hand_size = 5;

@@ -13,6 +13,13 @@ void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font, bool should_di
         ce->entity.is_mouse_over ? al_map_rgb(50, 222, 138) : al_map_rgb(238, 132, 52)
     );
 
+    char health[8], shield[12];
+    sprintf_s(health, 8, "HP: %d", ce->health);
+    sprintf_s(shield, 12, "Escudo: %d", ce->shield);
+
+    al_draw_text(font, al_map_rgb(255, 255, 255), ce->entity.x, ce->entity.y + ce->entity.height + 16, 0, health);
+    al_draw_text(font, al_map_rgb(255, 255, 255), ce->entity.x, ce->entity.y + ce->entity.height + 32, 0, shield);
+
     if (!should_display_intention) {
         return;
     }
@@ -24,11 +31,11 @@ void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font, bool should_di
             action_color = al_map_rgb(238, 132, 52);
             break;
         case INTENTION_SHIELD:
-            action_color = al_map_rgb(50, 222, 138);
+            action_color = al_map_rgb(147, 190, 223);
             break;
         case INTENTION_SPECIAL:
         DEFAULT:
-            action_color = al_map_rgb(255, 198, 217);
+            action_color = al_map_rgb(255, 255, 255);
     }
 
     char intention_value[2];
