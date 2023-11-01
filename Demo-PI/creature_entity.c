@@ -5,6 +5,10 @@
 #include "CreatureEntity.h"
 
 void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font, bool should_display_intention) {
+    if (ce->health <= 0) {
+        return;
+    }
+    
     al_draw_filled_rectangle(
         ce->entity.x,
         ce->entity.y,

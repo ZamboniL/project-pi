@@ -22,12 +22,11 @@ Card create_card(int id, const char* title, int cost, int damage, int shield) {
 
 Card create_card_from_id(int id) {
 	switch (id) {
-	case CARD_NULL:
-		return create_card(0, "Empty", 0, 0, 0);
 	case CARD_VACCINE:
-		return create_card(1, "Vacina", 1, 0, 5);
+		return create_card(1, "Vacina", 1, 0, 4);
 	case CARD_ANTIBACTERIAL:
-		return create_card(2, "Antibactericida", 1, 2, 0);
+		return create_card(2, "Antibactericida", 1, 8, 0);
+	case CARD_NULL:
 	default:
 		return create_card(0, "Empty", 0, 0, 0);
 	}

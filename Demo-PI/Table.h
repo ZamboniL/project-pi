@@ -21,6 +21,8 @@ typedef struct Table {
 	int highlighted_card;
 	int hovering_arena_entity;
 	bool is_hovering_arena_entity;
+	int mana;
+	int max_mana;
 } Table;
 
 void move_discard_to_deck(Table* table);

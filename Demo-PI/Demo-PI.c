@@ -16,7 +16,6 @@
 #define TURN_BOX_RADIUS 30
 
 //MANA
-int mana = 2;
 int box_mana_radius = 30;
 
 
@@ -103,7 +102,7 @@ int main()
                 if (event.mouse.button == 1) {
                     if (table.is_dragging_card) {
                         table.is_dragging_card = false;
-                        if (table.is_hovering_arena_entity) {
+                        if (table.is_hovering_arena_entity && table.mana >= table.hand[table.card_being_dragged].cost) {
                             play_card(&table, &arena);
                             continue;
                         }
@@ -141,8 +140,9 @@ int main()
 
         }
 
-        char turn_text[10];
+        char turn_text[10], mana_text[10];
         sprintf_s(turn_text, sizeof turn_text, "%d", turn);
+        sprintf_s(mana_text, sizeof mana_text, "%d", table.mana);
 
         if (done) {
             break;
@@ -156,7 +156,7 @@ int main()
             // AQUI FICAM AS CONSEQUÊNCIAS DA TROCA DE TURNO
             roll_enemy_intentions(&arena);
             turn_text_animation = 360;
-            mana = 2;
+            table.mana = table.max_mana;
             hand_draw(&table);
             // ------------------------------------------
             current_turn = turn;
@@ -179,7 +179,7 @@ int main()
 
             //circulo mana
             al_draw_circle(60,360, box_mana_radius, al_map_rgb(147, 190, 223), 4);
-            al_draw_text(font, al_map_rgb(255, 255, 255), 60 + 0, 360 - 3, ALLEGRO_ALIGN_CENTER, "2");
+            al_draw_text(font, al_map_rgb(255, 255, 255), 60 + 0, 360 - 3, ALLEGRO_ALIGN_CENTER, mana_text);
             
             draw_arena_entities(&arena, font);
            

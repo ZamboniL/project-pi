@@ -14,6 +14,7 @@ void play_card(Table* table, CombatArena* arena) {
 	}
 
 	target->shield += card->shield;
+	table->mana -= card->cost;
 
 	if (!target->shield) {
 		target->health -= card->damage;

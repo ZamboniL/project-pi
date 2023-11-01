@@ -41,7 +41,7 @@ void roll_enemy_intentions(CombatArena* arena) {
 }
 
 CombatArena create_arena() {
-	CreatureEntity enemy = { .entity.x = 450, .entity.y = 100, .entity.width = 100, .entity.height = 150, .health = 10, .shield = 25 };
+	CreatureEntity enemy = { .entity.x = 450, .entity.y = 100, .entity.width = 100, .entity.height = 150, .health = 10, .shield = 10 };
 	CreatureEntity hero = { .entity.x = 100, .entity.y = 100, .entity.width = 100, .entity.height = 150, .health = 50 };
 	CombatArena arena = { .hero = hero, .enemies = {enemy}, .enemies_quantity = 1 };
 

@@ -156,7 +156,9 @@ Table create_table() {
 		.has_highlighted_card = false,
 		.next_discard = 0,
 		.hovering_arena_entity = 0,
-		.is_hovering_arena_entity = false
+		.is_hovering_arena_entity = false,
+		.mana = 2,
+		.max_mana = 2,
 	};
 
 	table.hand_size = 5;
