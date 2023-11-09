@@ -1,20 +1,20 @@
-#include "Table.h"
+#include "Player.h"
 #include "CombatArena.h"
 #include "Card.h"
 
-void play_card(Table* table, CombatArena* arena) {
-	Card* card = &table->hand[table->card_being_dragged];
+void play_card() {
+	Card* card = &player.hand[player.card_being_dragged];
 	CreatureEntity* target;
 
-	if (table->hovering_arena_entity == HOVERING_HERO) {
-		target = &arena->hero;
+	if (player.hovering_arena_entity == HOVERING_HERO) {
+		target = &arena.hero;
 	}
 	else {
-		target = &arena->enemies[table->hovering_arena_entity];
+		target = &arena.enemies[player.hovering_arena_entity];
 	}
 
 	target->shield += card->shield;
-	table->mana -= card->cost;
+	player.mana -= card->cost;
 
 	if (!target->shield) {
 		target->health -= card->damage;
@@ -28,7 +28,7 @@ void play_card(Table* table, CombatArena* arena) {
 		target->shield -= card->damage;
 	}
 
-	discard_card(table, table->card_being_dragged);
+	discard_card(player.card_being_dragged);
 }
 
 void apply_shield(CreatureEntity* target, int value) {

@@ -1,5 +1,4 @@
 #include "CreatureEntity.h"
-#include "Table.h"
 
 #ifndef COMBAT_ARENA_H
 #define COMBAT_ARENA_H
@@ -12,12 +11,14 @@ typedef struct CombatArena {
 	int enemies_quantity;
 } CombatArena;
 
-void mark_if_mouse_is_over_arena_entity(ALLEGRO_MOUSE_EVENT mouse, CombatArena* arena, Table* table);
+CombatArena arena;
 
-void roll_enemy_intentions(CombatArena* arena);
+void mark_if_mouse_is_over_arena_entity(ALLEGRO_MOUSE_EVENT mouse);
 
-CombatArena create_arena();
+void roll_enemy_intentions();
 
-void draw_arena_entities(CombatArena* arena, ALLEGRO_FONT* font);
+void arena_init();
+
+void draw_arena_entities(ALLEGRO_FONT* font);
 
 #endif

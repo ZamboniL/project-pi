@@ -142,8 +142,8 @@
     <ClCompile Include="entity.c" />
     <ClCompile Include="Entity.h" />
     <ClCompile Include="screen.h" />
-    <ClCompile Include="table.c" />
-    <ClCompile Include="Table.h" />
+    <ClCompile Include="player.c" />
+    <ClCompile Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat.h" />

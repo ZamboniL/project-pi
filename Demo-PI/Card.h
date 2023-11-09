@@ -23,6 +23,10 @@ Card create_card(int id, const char* title, int cost, int damage, int shield);
 
 Card create_card_from_id(int id);
 
-void draw_card(Card* card, ALLEGRO_FONT* font);
+void draw_card(Card card, ALLEGRO_FONT* font);
+
+int calculate_card_x_hand_position(int card_width, int card_number, int hand_size);
+
+void position_card(Card* card, int card_number, int hand_size);
 
 #endif
