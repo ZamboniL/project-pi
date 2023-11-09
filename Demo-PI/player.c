@@ -6,6 +6,16 @@
 #include "Card.h"
 #include "screen.h"
 
+#ifndef sprintf_s
+#define sprintf_s(buf, size, ...) snprintf((buf), (size), __VA_ARGS__)
+#endif
+
+#ifndef strcat_s
+#define strcat_s(dest, size, src) strncat((dest), (src), (size))
+#endif
+
+Player player;
+
 void shuffle_deck()
 {
 	Card* array = player.deck.cards;
@@ -157,7 +167,7 @@ void highlight_card(int highlight_index) {
 void draw_player_entities(ALLEGRO_FONT* font) {
 	int deck_quantity = DECK_N - player.next_discard - player.hand_size;
 	int discard_quantity = player.next_discard;
-	char* deck_display_value[3], discard_display_value[3], mana_display_value[3];
+	char deck_display_value[3], discard_display_value[3], mana_display_value[3];
 
 	Entity deck = player.deck.entity;
 	Entity discard = player.discard.entity;
@@ -170,11 +180,11 @@ void draw_player_entities(ALLEGRO_FONT* font) {
 	al_draw_text(font, al_map_rgb(255, 255, 255), 60 + 2, 360 - 3, ALLEGRO_ALIGN_CENTER, mana_display_value);
 
 	al_draw_filled_rounded_rectangle(deck.x, deck.y, deck.x + deck.width, deck.y + deck.height, 4, 4, al_map_rgb(255, 255, 255));
-	al_draw_filled_circle(deck.x, deck.y + 10, 15, al_map_rgb(147, 190, 223), 4);
+	al_draw_filled_circle(deck.x, deck.y + 10, 15, al_map_rgb(147, 190, 223));
 	al_draw_text(font, al_map_rgb(255, 255, 255), deck.x, deck.y + 6, 1, deck_display_value);
 
 	al_draw_filled_rounded_rectangle(discard.x, discard.y, discard.x + discard.width, discard.y + discard.height, 4, 4, al_map_rgb(255,255,255));
-	al_draw_filled_circle(discard.x, discard.y + 10, 15, al_map_rgb(147, 190, 223), 4);
+	al_draw_filled_circle(discard.x, discard.y + 10, 15, al_map_rgb(147, 190, 223));
 	al_draw_text(font, al_map_rgb(255, 255, 255), discard.x, discard.y + 6, 1, discard_display_value);
 
 

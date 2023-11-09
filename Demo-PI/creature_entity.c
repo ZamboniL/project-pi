@@ -4,6 +4,10 @@
 #include <allegro5/allegro_font.h>
 #include "CreatureEntity.h"
 
+#ifndef sprintf_s
+#define sprintf_s(buf, size, ...) snprintf((buf), size, __VA_ARGS__)
+#endif
+
 void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font, bool should_display_intention) {
     if (ce->health <= 0) {
         return;
@@ -50,6 +54,6 @@ void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font, bool should_di
 
 void roll_creature_intention(CreatureEntity* ce) {
     ce->intention = rand() % 3;
-    printf("INTENÇÃO %d", ce->intention);
+    printf("INTENï¿½ï¿½O %d", ce->intention);
     ce->intention_value = rand() % 5 + 1;
 }

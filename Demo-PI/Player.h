@@ -33,7 +33,7 @@ typedef struct Player {
 	int max_mana;
 } Player;
 
-Player player;
+extern Player player;
 
 void shuffle_deck();
 

@@ -11,6 +11,14 @@
 #include "AnimationTimer.h"
 #include "combat.h"
 
+#ifndef sprintf_s
+#define sprintf_s(buf, size, ...) snprintf((buf), size, __VA_ARGS__)
+#endif
+
+#ifndef strcat_s
+#define strcat_s(dest, size, src) strncat((dest), (src), (size))
+#endif
+
 void notify_new_turn(const ALLEGRO_FONT *font,char turnText[]) {
     char new_turn_warning[24] = { "Novo turno: " };
     strcat_s(new_turn_warning, sizeof new_turn_warning, turnText);
@@ -56,7 +64,7 @@ int main()
     {
         al_wait_for_event(queue, &event);
 
-        // ESSE É O LOCAL DE EVENTO, TODAS AS INTERAÇÕES DO USUÁRIO FICAM LOCALIZADAS AQUI
+        // ESSE ï¿½ O LOCAL DE EVENTO, TODAS AS INTERAï¿½ï¿½ES DO USUï¿½RIO FICAM LOCALIZADAS AQUI
         switch (event.type)
         {
             case ALLEGRO_EVENT_TIMER:
@@ -111,7 +119,7 @@ int main()
                     }
                 }
             case ALLEGRO_EVENT_MOUSE_AXES:
-                // Verifica se o mouse está em cima do herói
+                // Verifica se o mouse estï¿½ em cima do herï¿½i
                 mark_if_mouse_is_over_arena_entity(event.mouse);
                 mark_if_mouse_is_over_entity(event.mouse, &turn_box);
 
@@ -139,7 +147,7 @@ int main()
         }
 
         if (current_turn != turn) {
-            // AQUI FICAM AS CONSEQUÊNCIAS DA TROCA DE TURNO
+            // AQUI FICAM AS CONSEQUï¿½NCIAS DA TROCA DE TURNO
             roll_enemy_intentions();
             turn_text_animation = 360;
             player.mana = player.max_mana;

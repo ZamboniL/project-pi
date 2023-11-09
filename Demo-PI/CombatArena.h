@@ -11,7 +11,7 @@ typedef struct CombatArena {
 	int enemies_quantity;
 } CombatArena;
 
-CombatArena arena;
+extern CombatArena arena;
 
 void mark_if_mouse_is_over_arena_entity(ALLEGRO_MOUSE_EVENT mouse);
 

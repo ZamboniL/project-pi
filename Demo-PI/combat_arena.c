@@ -4,11 +4,12 @@
 #include "CreatureEntity.h"
 #include "allegro5/allegro.h"
 
+CombatArena arena;
 
 void mark_if_mouse_is_over_arena_entity(ALLEGRO_MOUSE_EVENT mouse) {
 	player.is_hovering_arena_entity = false;
 
-	mark_if_mouse_is_over_entity(mouse, &arena.hero);
+	mark_if_mouse_is_over_entity(mouse, &arena.hero.entity);
 	if (arena.hero.entity.is_mouse_over) {
 		player.hovering_arena_entity = HOVERING_HERO;
 		player.is_hovering_arena_entity = true;
@@ -20,7 +21,7 @@ void mark_if_mouse_is_over_arena_entity(ALLEGRO_MOUSE_EVENT mouse) {
 			continue;
 		}
 
-		mark_if_mouse_is_over_entity(mouse, &arena.enemies[i]);
+		mark_if_mouse_is_over_entity(mouse, &arena.enemies[i].entity);
 		if (arena.enemies[i].entity.is_mouse_over) {
 			player.hovering_arena_entity = i;
 			player.is_hovering_arena_entity = true;

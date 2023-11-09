@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "CreatureEntity.h"
 #include "CombatArena.h"
 #include "Card.h"
 

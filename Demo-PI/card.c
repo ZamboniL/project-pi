@@ -6,6 +6,10 @@
 #include "Card.h"
 #include "screen.h"
 
+#ifndef sprintf_s
+#define sprintf_s(buf, size, ...) snprintf((buf), size, __VA_ARGS__)
+#endif
+
 Card create_card(int id, const char* title, int cost, int damage, int shield) {
 	Card card;
 	card.id = id;
