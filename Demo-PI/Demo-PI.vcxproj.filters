@@ -15,7 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Demo-PI.c">
+    <ClCompile Include="main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.C">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CreatureEntity.h">
@@ -37,6 +43,42 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="screen.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Timeline.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timeline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="combat_controller.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatController.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_state.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_state.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="turn.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="turn.h">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="AnimationTimer.h">

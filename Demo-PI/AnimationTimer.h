@@ -3,6 +3,8 @@
 
 typedef struct AnimationTimer {
 	int hand_return;
+	int from;
+	int to;
 } AnimationTimer;
 
 #endif

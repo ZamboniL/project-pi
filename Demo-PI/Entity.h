@@ -8,10 +8,12 @@ typedef struct Entity {
 	int y;
 	int width;
 	int height;
+	int sheet_column;
+	int sheet_row;
 	ALLEGRO_BITMAP* bitmap;
 	bool is_mouse_over;
 } Entity;
 
-void mark_if_mouse_is_over_entity(ALLEGRO_MOUSE_EVENT mouse, Entity* entity);
+bool mark_if_mouse_is_over_entity(ALLEGRO_MOUSE_EVENT mouse, Entity* entity);
 
 #endif

@@ -74,6 +74,7 @@
     <Allegro_AddonTTF>true</Allegro_AddonTTF>
     <Allegro_AddonFont>true</Allegro_AddonFont>
     <Allegro_AddonPrimitives>true</Allegro_AddonPrimitives>
+    <Allegro_AddonImage>true</Allegro_AddonImage>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,19 +135,33 @@
   <ItemGroup>
     <ClCompile Include="AnimationTimer.h" />
     <ClCompile Include="card.c" />
-    <ClCompile Include="combat.c" />
     <ClCompile Include="combat_arena.c" />
     <ClCompile Include="CreatureEntity.h" />
     <ClCompile Include="creature_entity.c" />
-    <ClCompile Include="Demo-PI.c" />
+    <ClCompile Include="main.c" />
     <ClCompile Include="entity.c" />
     <ClCompile Include="Entity.h" />
     <ClCompile Include="screen.h" />
     <ClCompile Include="player.c" />
+    <ClCompile Include="animation.c" />
+    <ClCompile Include="Animation.h" />
     <ClCompile Include="Player.h" />
+    <ClCompile Include="timeline.c" />
+    <ClCompile Include="Timeline.h" />
+    <ClCompile Include="combat_controller.c" />
+    <ClCompile Include="CombatController.h" />
+    <ClCompile Include="game_state.h" />
+    <ClCompile Include="game_state.c" />
+    <ClCompile Include="menu.c" />
+    <ClCompile Include="menu.h" />
+    <ClCompile Include="mouse.c" />
+    <ClCompile Include="Mouse.h" />
+    <ClCompile Include="turn.c" />
+    <ClCompile Include="turn.h" />
+    <ClCompile Include="combat.c" />
+    <ClCompile Include="combat.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="combat.h" />
     <ClInclude Include="CombatArena.h" />
     <ClInclude Include="Card.h" />
   </ItemGroup>
