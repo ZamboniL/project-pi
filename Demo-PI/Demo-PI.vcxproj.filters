@@ -18,25 +18,13 @@
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="animation.C">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CreatureEntity.h">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Table.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="card.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="table.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="entity.c">
@@ -93,15 +81,27 @@
     <ClCompile Include="combat.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="player.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="combat.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CombatArena.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="combat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

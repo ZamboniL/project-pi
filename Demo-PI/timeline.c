@@ -62,12 +62,12 @@ void draw_timeline(ALLEGRO_FONT* font)
 
     }
 
-    int card_width = current.entity.x + current.entity.width / 2 > timeline.entity.x + timeline.entity.width
-      ? timeline.entity.x + timeline.entity.width
-      : current.entity.x + current.entity.width / 2;
+    int card_width = current.entity.x + current.entity.width > timeline.entity.x + timeline.entity.width
+        ? timeline.entity.x + timeline.entity.width
+        : current.entity.x + current.entity.width;
 
     al_draw_filled_rectangle(
-      current.entity.x - current.entity.width / 2,
+      current.entity.x,
       current.entity.y,
       card_width,
       current.entity.y + current.entity.height,
@@ -214,7 +214,7 @@ int add_action_to_timeline(int source, int target, Card card) {
     return 1;
   }
 
-  float x = timeline.entity.x + (execution_time * ((float)timeline.entity.width / timeline.size));
+  float x = timeline.entity.x + (execution_time * ((float)timeline.entity.width / timeline.size)) - 16;
 
   TimelineCard timeline_card;
   timeline_card.entity.x = x;

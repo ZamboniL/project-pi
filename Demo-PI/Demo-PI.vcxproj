@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.c" />
     <ClCompile Include="AnimationTimer.h" />
     <ClCompile Include="card.c" />
     <ClCompile Include="combat_arena.c" />
@@ -143,7 +144,6 @@
     <ClCompile Include="Entity.h" />
     <ClCompile Include="screen.h" />
     <ClCompile Include="player.c" />
-    <ClCompile Include="animation.c" />
     <ClCompile Include="Animation.h" />
     <ClCompile Include="Player.h" />
     <ClCompile Include="timeline.c" />
