@@ -192,4 +192,6 @@ int combat(ALLEGRO_DISPLAY* disp, ALLEGRO_BITMAP* buffer, ALLEGRO_EVENT_QUEUE* e
   al_destroy_bitmap(card_small);
   al_destroy_bitmap(card_big);
   al_destroy_bitmap(turn_button);
+  al_destroy_bitmap(tutorial_icon);
+  al_destroy_bitmap(tutorial_background);
 }

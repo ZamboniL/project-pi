@@ -1,5 +1,6 @@
 #include <allegro5/allegro5.h>
 #include <allegro5/allegro_image.h>
+#include <stdio.h>
 #include "game_state.h"
 #include "Mouse.h"
 #include "CombatArena.h"

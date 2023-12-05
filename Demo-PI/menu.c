@@ -125,5 +125,4 @@ int menu(ALLEGRO_DISPLAY* disp, ALLEGRO_BITMAP* buffer, ALLEGRO_EVENT_QUEUE* eve
   }
 
   al_destroy_bitmap(background_sheet.bitmap);
-
 }

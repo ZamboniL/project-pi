@@ -171,6 +171,7 @@ void draw_creature_entity(CreatureEntity* ce, ALLEGRO_FONT* font) {
 
 void roll_creature_intention(CreatureEntity* ce) {
     ce->play[0] = rand() % ce->possible_plays_quantity;
+    ce->play[1] = -1;
 
     if (ce->possible_plays[ce->play[0]].card.time_cost <= ce->max_time_for_next_action && rand() % 100 > 75) {
         int second_play_index = rand() % ce->possible_plays_quantity;
