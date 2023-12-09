@@ -23,8 +23,11 @@ Player player;
 
 int card_return = 0;
 
+bool show_error_message = false;
+
 void update_player() {
 	if (turn.is_new_turn) {
+		show_error_message = false;
 		player.animation = create_animation(HAND_DRAW);
 	}
 
@@ -92,8 +95,11 @@ void update_player() {
 			if (player.is_hovering_arena_entity) {
 				int was_card_played = player_action();
 				if (was_card_played) {
+					show_error_message = false;
 					return;
 				}
+				show_error_message = true;
+
 			}
 			card_return = 15.0;
 		}
@@ -297,23 +303,10 @@ void highlight_player_card(int highlight_index) {
 }
 
 void draw_player_entities(ALLEGRO_FONT* font) {
-	int deck_quantity = DECK_N - player.next_discard - player.hand_size;
-	int discard_quantity = player.next_discard;
-	char deck_display_value[3], discard_display_value[3];
 
-	Entity deck = player.deck.entity;
-	Entity discard = player.discard.entity;
+	if (show_error_message)
+		al_draw_text(font, al_map_rgb(255, 255, 255), DISP_W / 2, 64, 1, "Você não tem tempo suficiente para jogar essa carta!");
 
-	sprintf_s(deck_display_value, 3, "%d", deck_quantity);
-	sprintf_s(discard_display_value, 3, "%d", discard_quantity);
-
-	al_draw_bitmap(deck.bitmap, deck.x, deck.y, 0);
-	al_draw_filled_circle(deck.x, deck.y + 10, 15, al_map_rgb(147, 190, 223));
-	al_draw_text(font, al_map_rgb(255, 255, 255), deck.x, deck.y + 6, 1, deck_display_value);
-
-	al_draw_bitmap(discard.bitmap, discard.x, discard.y, 0);
-	al_draw_filled_circle(discard.x, discard.y + 10, 15, al_map_rgb(147, 190, 223));
-	al_draw_text(font, al_map_rgb(255, 255, 255), discard.x, discard.y + 6, 1, discard_display_value);
 
 	for (int i = 0; i < player.hand_max_size; i++) {
 		draw_card(player.hand[i]);

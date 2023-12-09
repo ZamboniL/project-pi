@@ -48,8 +48,8 @@ int combat(ALLEGRO_DISPLAY* disp, ALLEGRO_BITMAP* buffer, ALLEGRO_EVENT_QUEUE* e
 
   Entity tutorial;
   tutorial.bitmap = tutorial_icon;
-  tutorial.x = DISP_W - 32;
-  tutorial.y = 0;
+  tutorial.x = 32;
+  tutorial.y = DISP_H - 48;
   tutorial.width = 32;
   tutorial.height = 25;
   tutorial.is_mouse_over = false;
@@ -98,7 +98,7 @@ int combat(ALLEGRO_DISPLAY* disp, ALLEGRO_BITMAP* buffer, ALLEGRO_EVENT_QUEUE* e
         if (game_state->screen == SCREEN_TUTORIAL) {
           change_game_state_screen(game_state, SCREEN_COMBAT);
           tutorial.x = DISP_W - 32;
-          tutorial.y = 0;
+          tutorial.y = DISP_H - 32;
           tutorial.width = 32;
           tutorial.height = 25;
         }
@@ -145,7 +145,7 @@ int combat(ALLEGRO_DISPLAY* disp, ALLEGRO_BITMAP* buffer, ALLEGRO_EVENT_QUEUE* e
       draw_timeline(font);
       draw_player_entities(font);
 
-      al_draw_bitmap(tutorial_icon, DISP_W - 32, 0, 0);
+      al_draw_bitmap(tutorial_icon, tutorial.x, tutorial.y, 0);
 
 
       if (game_state->animation.type == SCREEN_TRANSITION && !game_state->animation.ended) {
